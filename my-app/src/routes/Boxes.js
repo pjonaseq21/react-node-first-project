@@ -1,5 +1,6 @@
 import photoone from "../public/books.jpg"
 import phototwo from "../public/AI.jpg"
+import { useState, useEffect } from "react";
 
 import * as React from 'react';
 import { View, StyleSheet} from 'react-native';
@@ -47,6 +48,14 @@ const styles = StyleSheet.create({
   });
 
 export default function Boxes() {
+  let [data, setData] = useState()
+
+  useEffect(() => {
+
+    fetch(`http://localhost:3500/`)
+    .then((response) => response.json())
+    .then((actualData) => setData(actualData.result));
+}, []);
     return (
       <View style={styles.container}>
         <View style={styles.box}>
@@ -59,10 +68,12 @@ export default function Boxes() {
         </View>
         <View style={styles.box}>
           <View style={styles.inner}>
-          <Link to="/users">          
-          <span id="text-data">09-02-2023</span><br></br>
-          <span id="text"><strong>Czy maszyny nas zastąpią?</strong></span>
-          </Link>
+         
+          {data?.map((data, id) => [
+          <div key={id}>{data.title}</div> ,
+          <div>{data.text}</div>,
+         ]
+          )}
 
           </View>                      
         </View>
