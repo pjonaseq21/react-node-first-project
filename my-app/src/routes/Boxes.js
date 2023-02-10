@@ -72,7 +72,7 @@ export default function Boxes() {
           {data?.map((data, id) => [
           <div key={id}>{data.title}</div> ,
           <div>{data.text}</div>,
-         ]
+          <img src={require(`../public/upload/${data.photo}`)}></img>]
           )}
 
           </View>                      
