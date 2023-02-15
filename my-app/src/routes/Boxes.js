@@ -27,7 +27,6 @@ const styles = StyleSheet.create({
       flex: 1,
       justifyContent: 'flex-end',
       flexWrap:  "wrap",
-      justifyContent: "flex-end",
       padding: "1rem",
 
     }, innerone: {
@@ -48,14 +47,16 @@ const styles = StyleSheet.create({
   });
 
 export default function Boxes() {
-  let [data, setData] = useState()
-
+  let [data, setData] = useState({})
+  let [dataSecond,setDataSecond] = useState([])
   useEffect(() => {
-
     fetch(`http://localhost:3500/`)
-    .then((response) => response.json())
-    .then((actualData) => setData(actualData.result));
-}, []);
+      .then((response) => response.json())
+      .then((actualData) => {
+        setData(actualData.result);
+        setDataSecond(actualData.result[1]);
+      });
+  }, []);
     return (
       <View style={styles.container}>
         <View style={styles.box}>
@@ -67,15 +68,19 @@ export default function Boxes() {
           </View>                      
         </View>
         <View style={styles.box}>
-          <View style={styles.inner}>
-         
-          {data?.map((data, id) => [
-          <div key={id}>{data.title}</div> ,
-          <div>{data.text}</div>,
-          <img src={require(`../public/upload/${data.photo}`)}></img>]
-          )}
-
-          </View>                      
+        
+        {Object.keys(data).map(function(index, value) {
+          console.log(data)
+          return(
+          <div key={index} style={{
+            width: "100%",
+            height: "100%",
+            backgroundImage: `url(${require(`../public/upload/${data.photo}`)})`
+          }}>
+            <span>TEST</span>
+          </div>
+         ) })
+        }
         </View>
       </View>
     );

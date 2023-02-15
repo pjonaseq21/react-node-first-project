@@ -35,3 +35,15 @@ export default function Users() {
       </View>
     );
   }
+  /*   <div style={{
+    backgroundImage: `url(${require(`../public/upload/${data.photo}`)})`,
+    display: "flex",
+    alignItems: "end",
+    height: "100%",
+    justifyContent: 'flex-start',
+    backgroundSize: "cover",
+    padding: "1rem",}} key={id}>
+      <span style={styles.span}><strong>{data.title}</strong></span>
+    
+    </div>
+    */

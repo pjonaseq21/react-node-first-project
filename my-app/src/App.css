@@ -17,6 +17,9 @@ a{
 #text,#text-data{
   color: white;
 }
+#img-boxes{
+  width: 100%;
+}
 #header{
   padding: 10px;
   border: 1px solid rgba(128, 128, 128, 0.306);

@@ -4,7 +4,7 @@ const port = 3500
 const fs = require("fs")
 const router = express.Router();
 const multer  = require('multer')
-var upload = multer({dest : './my-app/src/routes/upload'}) 
+var upload = multer({dest : './my-app/src/public/upload'}) 
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({
@@ -26,12 +26,12 @@ app.get('/', (req, res) => {
     if(err){
       console.log(err)
     }
-    res.json({result:result})
+    res.json({result:result[0],resultSecond: result[1],})
   })
 })
 app.post("/admindata",upload.single('file'),(req,res)=>{
   console.log(req.file)
-  fs.rename(req.file.path,`./my-app/src/routes/upload/${req.body.title}.jpg`,(err)=>{
+  fs.rename(req.file.path,`./my-app/src/public/upload/${req.body.title}.jpg`,(err)=>{
     console.log(err)
   })
   connection.query(`INSERT INTO posts(title,text,photo) VALUES("${req.body.title}","${req.body.text}","${req.body.title}.jpg") `)
