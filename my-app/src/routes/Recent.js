@@ -2,8 +2,8 @@ import * as React from 'react';
 import { View, StyleSheet} from 'react-native';
 import { Link} from "react-router-dom";
 import planets from "../public/planets.jpg"
-import chess from '../public/chess.jpg'
-import boy from "../public/boy.jpg"
+import { useState, useEffect } from "react";
+
 const styles = StyleSheet.create({
     container: {
       width: "80%",
@@ -20,42 +20,9 @@ const styles = StyleSheet.create({
         height: "80%",
         padding: 5,
         justifyContent: "start",
-        flexDirection: 'row',
+        flexDirection: 'column',
     }
-    , innertwo: {
-        justifyContent: "start",
-        textAlign: "center",
-        backgroundImage: `url(${chess})`,   
-        backgroundSize: "cover",
-        backgroundRepeat: 'no-repeat',
-        width: '100%;',
-        height:"100%",
-        backgroundPosition: "50%",
-        fontSize: "20px",
-  
-      },
-      innerthree: {
-        backgroundImage: `url(${boy})`,   
-        backgroundSize: "cover",
-        backgroundRepeat: 'no-repeat',
-        width: '100%;',
-        height:"100%",
-        justifyContent: "start",
-        textAlign: "center",
-        fontSize: "20px",
-  
-      }, innerone: {
-        justifyContent: "start",
-        textAlign: "center",
-        backgroundImage: `url(${planets})`,   
-        backgroundSize: "cover",
-        backgroundRepeat: 'no-repeat',
-        backgroundPosition: "50%",
-        height:"100%",
-        width: '100%',
-        fontSize: "20px",
-  
-      },
+ ,
       containerforarticles:{
         width: "100%",
       height: "100%",
@@ -67,6 +34,113 @@ const styles = StyleSheet.create({
 })
 
 export default function Recent() {
+
+  const [data, setData] = useState([]);
+  const [dataSecond, setDataSecond] = useState([]);
+  const [dataThird, setDataThird] = useState([]);
+
+  useEffect(() => {
+    async function FetchData(){
+    await fetch(`http://localhost:3500/getrecent`)
+      .then((response) =>  response.json())
+      .then((actualData) => {
+        setData([actualData.result[0]]);
+        setDataSecond([actualData.result[1]])
+        setDataThird([actualData.result[2]])
+    });
+}FetchData()
+
+}, []);
+const boxesRecent = data.map((item, index) => {
+  const photo = require(`../public/upload/${item.photo}`);
+
+  return (
+    <a href={`/post/${item.id}`}>
+
+    <div
+      key={index}
+      style={{
+        width: "100%",
+        backgroundPosition: "50%",
+        borderRadius: "10px",
+        display: "flex",
+        paddingLeft: "10px",
+        marginBottom: "0px",
+        height: "100%",
+        backgroundImage: `url(${photo})`,
+        backgroundSize: "cover",
+        backgroundRepeat: 'no-repeat',
+        flexDirection: "column",
+        justifyContent: "flex-end",
+        color: "white",
+      }}
+    >
+      <span id="Title-of-post">{item.data}</span>
+      <span id="Title-of-post">{item.title}</span>
+    </div>
+    </a>
+  );
+});
+const boxesRecentSecond = dataSecond.map((item, index) => {
+  const photo = require(`../public/upload/${item.photo}`);
+
+  return (
+    <a href={`/post/${item.id}`}>
+    <div
+      key={index}
+      style={{
+        width: "100%",
+        backgroundPosition: "50%",
+        borderRadius: "10px",
+        display: "flex",
+        paddingLeft: "10px",
+        marginBottom: "0px",
+        height: "100%",
+        backgroundImage: `url(${photo})`,
+        backgroundSize: "cover",
+        backgroundRepeat: 'no-repeat',
+        flexDirection: "column",
+        justifyContent: "flex-end",
+        color: "white",
+      }}
+    >
+      <span id="Title-of-post">{item.data}</span>
+      <span id="Title-of-post">{item.title}</span>
+    </div>
+    </a>
+  );
+});
+
+const boxesRecentThird = dataThird.map((item, index) => {
+  const photo = require(`../public/upload/${item.photo}`);
+
+  return (
+    <a href={`/post/${item.id}`}>
+
+    <div
+      key={index}
+      style={{
+        width: "100%",
+        backgroundPosition: "50%",
+        borderRadius: "10px",
+        display: "flex",
+        paddingLeft: "10px",
+        marginBottom: "0px",
+        height: "100%",
+        backgroundImage: `url(${photo})`,
+        backgroundSize: "cover",
+        backgroundRepeat: 'no-repeat',
+        flexDirection: "column",
+        justifyContent: "flex-end",
+        color: "white",
+      }}
+    >
+      <span id="Title-of-post">{item.data}</span>
+      <span id="Title-of-post">{item.title}</span>
+    </div>
+    </a>
+  );
+});
     return (
         
       <View style={styles.container}>
@@ -74,30 +148,18 @@ export default function Recent() {
         <View style={styles.containerforarticles}>
 
         <div id='recent-1' style={styles.box}> 
-            <View style={styles.innerone}  >
-            <Link to="/users">          
-            <span id="text-data">09-02-2023</span><br></br>
-            <span id="text"><strong>Te planety przewidzą przyszłość</strong></span>
-            </Link>
-            </View>   
+
+           {boxesRecent} 
         </div>
 
         <div id='recent-2' style={styles.box}> 
-            <View style={styles.innertwo} >
-            <Link to="/users">          
-            <span id="text-data">09-02-2023</span><br></br>
-            <span id="text"><strong>Szachy rozwijają umysł</strong></span>
-            </Link>
-            </View>   
+        {boxesRecentSecond} 
+  
         </div>
 
         <div id='recent-3' style={styles.box}> 
-            <View style={styles.innerthree} >
-            <Link to="/users">          
-            <span id="text-data">09-02-2023</span><br></br>
-            <span id="text"><strong>Niesamowity nastolatek rozwiązał problem</strong></span>
-            </Link>
-            </View>   
+        {boxesRecentThird} 
+ 
         </div>
         </View>
 

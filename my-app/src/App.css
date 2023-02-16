@@ -9,11 +9,13 @@ a{
   filter: drop-shadow(0px 8px 8px rgba(0, 0, 0, 0.25));
 
 }
+#Title-of-post,#Title-of-post-header{
+  padding: 10px;
+  font-size: 1.5rem;
+  filter: drop-shadow(0px 8px 8px rgba(0, 0, 0, 0.25));
 
-#recent{
-  border: 3px solid gray;
-  border-style: solid  none none none;
 }
+
 #text,#text-data{
   color: white;
 }
@@ -48,6 +50,14 @@ body {
 @media screen and (max-width: 720px) {
   #header-container{
     width: 100% !important;
+  }
+  #Title-of-post-header{
+    font-size: 0.7rem;
+    padding: 5px;
+  }
+  #Title-of-post{
+    font-size: 1rem;
+    padding: 5px;
   }
   nav{
     width: 90% !important;

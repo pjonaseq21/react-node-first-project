@@ -8,37 +8,14 @@ import { Link} from "react-router-dom";
 const styles = StyleSheet.create({
     container: {
       width: "80%",
-      height: "40%",
-      justifyContent: "center",
+      height: "200px",
+      display: "flex",
+      justifyContent: "start",
       marginLeft: 'auto',
       marginRight: 'auto',
-      flexDirection: 'row',
-      flexWrap: 'wrap',
-      marginBottom: '10px',    
     },
-    box: {
-      width: "50%",
-      height: "100%",
-      padding: 7
-    },
-    inner: {
-      backgroundImage: `url(${phototwo})`,
-      
-      flex: 1,
-      justifyContent: 'flex-end',
-      flexWrap:  "wrap",
-      padding: "1rem",
-
-    }, innerone: {
-      flexWrap:  "wrap",
-      padding: "1rem",
-      justifyContent: "flex-end",
-      backgroundImage: `url(${photoone})`,
-      backgroundSize: "cover",
-      backgroundRepeat: 'no-repeat',
-      height: "100%",
-
-    },
+  
+    
     span:{
       color: "white",
 
@@ -56,6 +33,7 @@ export default function Boxes() {
       .then((response) =>  response.json())
       .then((actualData) => {
         setData([actualData.result]);
+        setDataSecond([actualData.resultSecond])
     });
 }FetchData()
 
@@ -68,16 +46,61 @@ const boxes = data.map((item, index) => {
     <div
       key={index}
       style={{
-        width: "100%",
-        height: "500px",
-        backgroundImage: `url(${photo})`
+        filter: "drop-shadow(0px 8px 8px rgba(0, 0, 0, 0.25))",
+        width: "50%",
+        paddingLeft: "10px",
+        display: "flex",
+        height: "200px",
+        marginRight: "10px",
+        marginBottom: "20px",
+        borderRadius: "10px",
+        backgroundImage: `url(${photo})`,
+        backgroundSize: "cover",
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: "50%",
+        justifyContent: "start",
+        alignItems: "end",
+        color: "white",
       }}
     >
-      <span>TEST</span>
+      <span id="Title-of-post">{item.data}</span>
+      <span id="Title-of-post-header">{item.title}</span>
+    </div>
+  );
+});
+const boxesSecond = dataSecond.map((item, index) => {
+  const photo = require(`../public/upload/${item.photo}`);
+
+  return (
+    <div
+      key={index}
+      style={{
+        display: "flex",
+        width: "50%",
+        backgroundPosition: "50%",
+        height: "200px",
+        paddingLeft: "10px",
+        marginLeft: "10x",
+        borderRadius: "10px",
+        justifyContent: "start",
+        color: "white",
+        alignItems: "end",
+        backgroundImage: `url(${photo})`,
+        backgroundSize: "cover",
+        backgroundRepeat: 'no-repeat',
+        filter: "drop-shadow(0px 8px 8px rgba(0, 0, 0, 0.25))",
+
+      }}
+    >
+      <span id="Title-of-post">{item.data}</span>
+      <span id="Title-of-post-header">{item.title}</span>
     </div>
   );
 });
       return(
-        <div>{boxes}</div>
+        <div style={styles.container}>
+        {boxes}
+        {boxesSecond}
+        </div>
       )
     }

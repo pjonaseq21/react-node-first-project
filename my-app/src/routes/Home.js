@@ -64,7 +64,6 @@ export default function Home() {
           <span id='header' style={styles.navbar_item}>News</span>
           <span id='header' style={styles.navbar_item}>Popular</span>
           <span id='header' style={styles.navbar_item}>About</span>
-          
           </nav>
           </div>
         <Boxes/>
