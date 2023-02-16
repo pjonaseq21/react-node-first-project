@@ -46,25 +46,26 @@ const boxes = data.map((item, index) => {
     <div
       key={index}
       style={{
-        filter: "drop-shadow(0px 8px 8px rgba(0, 0, 0, 0.25))",
-        width: "50%",
-        paddingLeft: "10px",
         display: "flex",
+        width: "50%",
+        backgroundPosition: "50%",
         height: "200px",
-        marginRight: "10px",
-        marginBottom: "20px",
+        paddingLeft: "10px",
+        marginLeft: "10x",
         borderRadius: "10px",
+        color: "white",
+        flexDirection: "row",
+        alignItems: "end",
+        justifyContent: "space-between",
         backgroundImage: `url(${photo})`,
         backgroundSize: "cover",
         backgroundRepeat: 'no-repeat',
-        backgroundPosition: "50%",
-        justifyContent: "start",
-        alignItems: "end",
-        color: "white",
+        filter: "drop-shadow(0px 8px 8px rgba(0, 0, 0, 0.25))",
       }}
     >
-      <span id="Title-of-post">{item.data}</span>
       <span id="Title-of-post-header">{item.title}</span>
+      <span id="Title-of-post-data">{item.data}</span>
+
     </div>
   );
 });
@@ -82,9 +83,10 @@ const boxesSecond = dataSecond.map((item, index) => {
         paddingLeft: "10px",
         marginLeft: "10x",
         borderRadius: "10px",
-        justifyContent: "start",
         color: "white",
+        flexDirection: "row",
         alignItems: "end",
+        justifyContent: "space-between",
         backgroundImage: `url(${photo})`,
         backgroundSize: "cover",
         backgroundRepeat: 'no-repeat',
@@ -92,8 +94,9 @@ const boxesSecond = dataSecond.map((item, index) => {
 
       }}
     >
-      <span id="Title-of-post">{item.data}</span>
       <span id="Title-of-post-header">{item.title}</span>
+      <span id="Title-of-post-data">{item.data}</span>
+
     </div>
   );
 });

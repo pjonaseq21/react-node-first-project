@@ -35,7 +35,6 @@ app.get('/', (req, res) => {
     if(err){
       console.log(err)
     }
-    console.log(result)
     res.json({result:result[0],resultSecond: result[1],})
   })
 })
@@ -47,11 +46,15 @@ app.get("/getrecent",(req,res)=>{
   })
 })
 app.get("/post/:id",(req,res)=>{
-  console.log(req.params.id)
+  connection.query(`SELECT * FROM posts where id=${req.params.id}`,(err,result)=>{
+    dateFormat(result)
+    console.log(result)
+    res.json({result:result})
+  })
 })
 app.post("/admindata",upload.single('file'),(req,res)=>{
   console.log(req.file)
-  fs.rename(req.file.path,`./my-app/src/public/upload/${req.body.title}.jpg`,(err)=>{
+  fs.rename(req.file.path,`./my-app/src/public/upload/${req.body.id}.jpg`,(err)=>{
     console.log(err)
   })
   connection.query(`INSERT INTO posts(title,text,photo,data) VALUES("${req.body.title}","${req.body.text}","${req.body.title}.jpg","curdate()") `)

@@ -70,13 +70,14 @@ const boxesRecent = data.map((item, index) => {
         backgroundImage: `url(${photo})`,
         backgroundSize: "cover",
         backgroundRepeat: 'no-repeat',
-        flexDirection: "column",
-        justifyContent: "flex-end",
+        flexDirection: "row",
+        alignItems: "end",
+        justifyContent: "space-between",
         color: "white",
       }}
     >
-      <span id="Title-of-post">{item.data}</span>
       <span id="Title-of-post">{item.title}</span>
+      <span id="Title-of-post-data">{item.data}</span>
     </div>
     </a>
   );
@@ -99,13 +100,15 @@ const boxesRecentSecond = dataSecond.map((item, index) => {
         backgroundImage: `url(${photo})`,
         backgroundSize: "cover",
         backgroundRepeat: 'no-repeat',
-        flexDirection: "column",
-        justifyContent: "flex-end",
+        flexDirection: "row",
+        alignItems: "end",
+        justifyContent: "space-between",
         color: "white",
       }}
     >
-      <span id="Title-of-post">{item.data}</span>
       <span id="Title-of-post">{item.title}</span>
+      <span id="Title-of-post-data">{item.data}</span>
+
     </div>
     </a>
   );
@@ -130,13 +133,15 @@ const boxesRecentThird = dataThird.map((item, index) => {
         backgroundImage: `url(${photo})`,
         backgroundSize: "cover",
         backgroundRepeat: 'no-repeat',
-        flexDirection: "column",
-        justifyContent: "flex-end",
+        flexDirection: "row",
+        alignItems: "end",
+        justifyContent: "space-between",
         color: "white",
       }}
     >
-      <span id="Title-of-post">{item.data}</span>
       <span id="Title-of-post">{item.title}</span>
+      <span id="Title-of-post-data">{item.data}</span>
+
     </div>
     </a>
   );
