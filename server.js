@@ -14,7 +14,9 @@ app.use(bodyParser.urlencoded({
 }));
 let cors = require("cors");
 const mysql = require("mysql2")
-
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -53,11 +55,12 @@ app.get("/post/:id",(req,res)=>{
   })
 })
 app.post("/admindata",upload.single('file'),(req,res)=>{
-  console.log(req.file)
-  fs.rename(req.file.path,`./my-app/src/public/upload/${req.body.id}.jpg`,(err)=>{
+  let randomNumber = getRandomInt(1000)
+  console.log(req.body.id)
+  fs.rename(req.file.path,`./my-app/src/public/upload/${randomNumber}.jpg`,(err)=>{
     console.log(err)
   })
-  connection.query(`INSERT INTO posts(title,text,photo,data) VALUES("${req.body.title}","${req.body.text}","${req.body.title}.jpg","curdate()") `)
+  connection.query(`INSERT INTO posts(title,text,photo,data) VALUES("${req.body.title}","${req.body.text}","${randomNumber}.jpg","curdate()") `)
   res.redirect("http://localhost:3000/")
 })
 app.listen(port, () => {
