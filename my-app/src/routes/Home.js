@@ -1,7 +1,7 @@
 import * as React from 'react';
 import logo from "../public/logo.svg"
 import { useState, useEffect } from "react";
-
+import Alert from "./Alert"
 import { View, StyleSheet} from 'react-native';
 import Header from './Header';
 import Boxes from './Boxes'
@@ -57,7 +57,7 @@ export default function Home() {
   
     return (
       <View style={styles.container}>
-        
+        <Alert />
         <Header />
         <Boxes/>
         <Recent />

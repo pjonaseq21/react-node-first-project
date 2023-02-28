@@ -55,7 +55,7 @@ const boxesRecent = data.map((item, index) => {
   const photo = require(`../public/upload/${item.photo}`);
 
   return (
-    <a href={`/post/${item.id}`}>
+    <a href={`/post/${item.ID}`}>
 
     <div
       key={index}
@@ -86,7 +86,7 @@ const boxesRecentSecond = dataSecond.map((item, index) => {
   const photo = require(`../public/upload/${item.photo}`);
 
   return (
-    <a href={`/post/${item.id}`}>
+    <a href={`/post/${item.ID}`}>
     <div
       key={index}
       style={{
@@ -118,7 +118,7 @@ const boxesRecentThird = dataThird.map((item, index) => {
   const photo = require(`../public/upload/${item.photo}`);
 
   return (
-    <a href={`/post/${item.id}`}>
+    <a href={`/post/${item.ID}`}>
 
     <div
       key={index}

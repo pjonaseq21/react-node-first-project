@@ -2,9 +2,10 @@ var mysql = require('mysql2');
 
 
 let config = {
-    host: "localhost",
-    user: "root",
-    database : "users",
+    host:   '127.0.0.1',
+    user: "user",
+    database : "shop",
+    password: "test123",
 
 };
   

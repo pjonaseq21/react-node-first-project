@@ -1,6 +1,4 @@
 import * as React from 'react';
-import { View, StyleSheet} from 'react-native';
-import { Link} from "react-router-dom";
 import { useState, useEffect  } from "react";
 import { useParams } from 'react-router-dom';
 import Header from "./Header"
@@ -24,6 +22,7 @@ export default function Post(){
 }, []);
     return(
         <div>
+
         <Header />
         </div>
     )
