@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import io from 'socket.io-client';
+
 import Swal from 'sweetalert2';
 const socket = io('ws://localhost:3501');
 
@@ -18,7 +19,7 @@ function Alert() {
   }, []);
 
   return (
-    0
+    null
   );
 }
 

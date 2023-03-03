@@ -58,7 +58,7 @@ const boxesRecent = data.map((item, index) => {
     <a href={`/post/${item.ID}`}>
 
     <div
-      key={index}
+      key={`${item}_${index}`}  // eslint-disable-next-line react/no-array-index-key
       style={{
         width: "100%",
         backgroundPosition: "50%",
@@ -88,7 +88,7 @@ const boxesRecentSecond = dataSecond.map((item, index) => {
   return (
     <a href={`/post/${item.ID}`}>
     <div
-      key={index}
+      key={`${item}_${index}2`}  // eslint-disable-next-line react/no-array-index-key
       style={{
         width: "100%",
         backgroundPosition: "50%",
@@ -121,7 +121,7 @@ const boxesRecentThird = dataThird.map((item, index) => {
     <a href={`/post/${item.ID}`}>
 
     <div
-      key={index}
+  key={`${item}_${index}3`}  // eslint-disable-next-line react/no-array-index-key
       style={{
         width: "100%",
         backgroundPosition: "50%",

@@ -8,6 +8,15 @@ a{
   margin-bottom: 30px;
   filter: drop-shadow(0px 8px 8px rgba(0, 0, 0, 0.25));
 
+}#Title-post{
+  font-size: 2rem;
+  color: black;
+}
+#container-post{
+  width: 80%;
+  height: auto;
+  margin: auto;
+  margin-top: 20px;
 }
 #Title-of-post-data{
   font-size: 1rem;
@@ -16,6 +25,7 @@ a{
   opacity: 0.8;
 
 }
+
 #Title-of-post-header{
   padding: 5px !important;
   filter: drop-shadow(0px 8px 8px rgba(0, 0, 0, 0.25));
@@ -27,6 +37,7 @@ a{
   font-size: 1.5rem;
   filter: drop-shadow(0px 8px 8px rgba(0, 0, 0, 0.25));
   padding: 0;
+  color: black;
   font-weight: bold;
 }
 
